@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Práctica con Formularios y JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .contenedor {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .botones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #0078d7;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #222;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Operaciones Aritméticas</h1>
+
+    <form onsubmit="return false;">
+      <input type="number" id="num1" placeholder="Ingresa el primer número" />
+      <input type="number" id="num2" placeholder="Ingresa el segundo número" />
+
+      <div class="botones">
+        <button onclick="calcular('suma')">Suma</button>
+        <button onclick="calcular('resta')">Resta</button>
+        <button onclick="calcular('division')">División</button>
+        <button onclick="calcular('potencia')">Exponenciación</button>
+      </div>
+    </form>
+
+    <p id="resultado">Aquí aparecerá el resultado</p>
+  </div>
+
+  <script>
+    function calcular(operacion) {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+      let resultado = document.getElementById("resultado");
+
+      if (isNaN(num1) || isNaN(num2)) {
+        resultado.textContent = "Por favor, ingresa ambos números.";
+        return;
+      }
+
+      switch (operacion) {
+        case "suma":
+          resultado.textContent = "Resultado de la suma: " + (num1 + num2);
+          break;
+        case "resta":
+          resultado.textContent = "Resultado de la resta: " + (num1 - num2);
+          break;
+        case "division":
+          if (num2 === 0) {
+            resultado.textContent = "No se puede dividir entre cero.";
+          } else {
+            resultado.textContent = "Resultado de la división: " + (num1 / num2);
+          }
+          break;
+        case "potencia":
+          resultado.textContent = "Resultado de la exponenciación: " + (num1 ** num2);
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
