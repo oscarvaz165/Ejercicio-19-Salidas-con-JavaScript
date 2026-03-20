@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de IMC para Mujer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .contenedor {
+      background: white;
+      width: 400px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #444;
+      font-weight: bold;
+    }
+
+    input {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #e63946;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #c92f3b;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f1f1;
+      border-radius: 8px;
+      color: #222;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Cálculo de IMC para Mujer</h1>
+
+    <form onsubmit="return false;">
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" step="0.1" placeholder="Ejemplo: 65">
+
+      <label for="estatura">Estatura (m):</label>
+      <input type="number" id="estatura" step="0.01" placeholder="Ejemplo: 1.65">
+
+      <button onclick="calcularIMC()">Calcular IMC</button>
+    </form>
+
+    <div id="resultado">Aquí aparecerá tu resultado.</div>
+  </div>
+
+  <script>
+    function calcularIMC() {
+      let peso = parseFloat(document.getElementById("peso").value);
+      let estatura = parseFloat(document.getElementById("estatura").value);
+      let resultado = document.getElementById("resultado");
+
+      if (isNaN(peso) || isNaN(estatura) || peso <= 0 || estatura <= 0) {
+        resultado.innerHTML = "Por favor, ingresa valores válidos.";
+        return;
+      }
+
+      let imc = peso / (estatura * estatura);
+      let grado = "";
+
+      if (imc < 18.5) {
+        grado = "Bajo peso";
+      } else if (imc >= 18.5 && imc < 24.9) {
+        grado = "Peso normal";
+      } else if (imc >= 25 && imc < 29.9) {
+        grado = "Sobrepeso";
+      } else if (imc >= 30 && imc < 34.9) {
+        grado = "Obesidad grado I";
+      } else if (imc >= 35 && imc < 39.9) {
+        grado = "Obesidad grado II";
+      } else {
+        grado = "Obesidad grado III";
+      }
+
+      resultado.innerHTML = `
+        <strong>IMC:</strong> ${imc.toFixed(2)} <br>
+        <strong>Grado:</strong> ${grado}
+      `;
+    }
+  </script>
+</body>
+</html>
