@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salidas de texto en JavaScript</title>
+</head>
+<body>
+    <h1>Salidas de texto en JavaScript</h1>
+    <p id="datos"></p>
+
+    <button onclick="mostrarAlerta()">Mostrar alerta</button>
+    <button onclick="window.print()">Imprimir página</button>
+
+    <script>
+        // Datos personales
+        let nombre = "Oscar Vazquez Miranda";
+        let telefono = "6682667209";
+        let correo = "arvevaz58@gmail.com";
+        let carrera = "Ingeniería de Software";
+        let ciudad = "Los Mochis, Sinaloa";
+
+        // 1. Salida con innerHTML
+        document.getElementById("datos").innerHTML =
+            "<strong>Nombre:</strong> " + nombre + "<br>" +
+            "<strong>Teléfono:</strong> " + telefono + "<br>" +
+            "<strong>Correo:</strong> " + correo + "<br>" +
+            "<strong>Carrera:</strong> " + carrera + "<br>" +
+            "<strong>Ciudad:</strong> " + ciudad;
+
+        // 2. Salida con document.write()
+        document.write("<h2>Datos mostrados con document.write()</h2>");
+        document.write("Nombre: " + nombre + "<br>");
+        document.write("Teléfono: " + telefono + "<br>");
+        document.write("Correo: " + correo + "<br>");
+        document.write("Carrera: " + carrera + "<br>");
+        document.write("Ciudad: " + ciudad + "<br><br>");
+
+        // 3. Salida en consola
+        console.log("Datos personales:");
+        console.log("Nombre: " + nombre);
+        console.log("Teléfono: " + telefono);
+        console.log("Correo: " + correo);
+        console.log("Carrera: " + carrera);
+        console.log("Ciudad: " + ciudad);
+
+        // 4. Salida con alerta
+        function mostrarAlerta() {
+            alert(
+                "Datos personales:\n" +
+                "Nombre: " + nombre + "\n" +
+                "Teléfono: " + telefono + "\n" +
+                "Correo: " + correo + "\n" +
+                "Carrera: " + carrera + "\n" +
+                "Ciudad: " + ciudad
+            );
+        }
+    </script>
+</body>
+</html>
