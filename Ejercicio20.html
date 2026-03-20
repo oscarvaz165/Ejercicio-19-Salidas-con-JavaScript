@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con JavaScript</title>
+</head>
+<body>
+    <h1>Operaciones básicas en JavaScript</h1>
+    <div id="resultado"></div>
+
+    <script>
+        // Declaración de variables
+        let num1 = 8;
+        let num2 = 2;
+
+        // Operaciones
+        let suma = num1 + num2;
+        let resta = num1 - num2;
+        let division = num1 / num2;
+        let exponenciacion = num1 ** num2;
+
+        // Mostrar resultados en la página
+        document.getElementById("resultado").innerHTML = `
+            <p><strong>Valor de num1:</strong> ${num1}</p>
+            <p><strong>Valor de num2:</strong> ${num2}</p>
+            <p><strong>Suma:</strong> ${suma}</p>
+            <p><strong>Resta:</strong> ${resta}</p>
+            <p><strong>División:</strong> ${division}</p>
+            <p><strong>Exponenciación:</strong> ${exponenciacion}</p>
+        `;
+    </script>
+</body>
+</html>
