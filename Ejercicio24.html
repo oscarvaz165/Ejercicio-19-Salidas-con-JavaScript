@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha Actual con Switch</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .fecha-container {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fecha-container" id="fecha-display">
+        </div>
+
+    <script>
+        const fechaActual = new Date();
+        
+        // 1. Obtener día de la semana (0-6)
+        let nombreDia;
+        switch (fechaActual.getDay()) {
+            case 0: nombreDia = "domingo"; break;
+            case 1: nombreDia = "lunes"; break;
+            case 2: nombreDia = "martes"; break;
+            case 3: nombreDia = "miércoles"; break;
+            case 4: nombreDia = "jueves"; break;
+            case 5: nombreDia = "viernes"; break;
+            case 6: nombreDia = "sábado"; break;
+        }
+
+        // 2. Obtener número del día y año
+        const diaMes = fechaActual.getDate();
+        const anio = fechaActual.getFullYear();
+
+        // 3. Obtener el mes (0-11)
+        let nombreMes;
+        switch (fechaActual.getMonth()) {
+            case 0: nombreMes = "Enero"; break;
+            case 1: nombreMes = "Febrero"; break;
+            case 2: nombreMes = "Marzo"; break;
+            case 3: nombreMes = "Abril"; break;
+            case 4: nombreMes = "Mayo"; break;
+            case 5: nombreMes = "Junio"; break;
+            case 6: nombreMes = "Julio"; break;
+            case 7: nombreMes = "Agosto"; break;
+            case 8: nombreMes = "Septiembre"; break;
+            case 9: nombreMes = "Octubre"; break;
+            case 10: nombreMes = "Noviembre"; break;
+            case 11: nombreMes = "Diciembre"; break;
+        }
+
+        // 4. Construir y mostrar la cadena
+        const mensaje = `Hoy es ${nombreDia} ${diaMes} de ${nombreMes} del año ${anio}`;
+        document.getElementById('fecha-display').innerText = mensaje;
+    </script>
+</body>
+</html>
