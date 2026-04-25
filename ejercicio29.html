@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Paridad</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #f0f2f5; }
+        .container { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); width: 350px; }
+        h2 { color: #1c1e21; font-size: 1.2rem; margin-bottom: 15px; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: bold; }
+        button:hover { background-color: #218838; }
+        #resultado { margin-top: 20px; line-height: 1.5; color: #444; padding: 10px; border-radius: 4px; background: #f8f9fa; }
+        .destaque { font-weight: bold; color: #000; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>¿Par o Impar?</h2>
+    <form id="paridadForm">
+        <input type="number" id="numero" placeholder="Introduce un número" required>
+        <button type="submit">Comprobar</button>
+    </form>
+    <div id="resultado"></div>
+</div>
+
+<script>
+    document.getElementById('paridadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const num = parseInt(document.getElementById('numero').value);
+        const resultadoDiv = document.getElementById('resultado');
+        
+        // Calculamos el resto
+        const resto = num % 2;
+
+        if (resto === 0) {
+            // Caso Par
+            resultadoDiv.innerHTML = `<span class="destaque">Par</span> ya que ${num} dividido entre 2 tiene un resto de 0, por lo que es par.`;
+        } else {
+            // Caso Impar
+            resultadoDiv.innerHTML = `<span class="destaque">Impar</span> ya que ${num} dividido entre 2 tiene un resto de ${Math.abs(resto)}, por lo que es impar.`;
+        }
+    });
+</script>
+
+</body>
+</html>

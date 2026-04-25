@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Usuario e Iniciales</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #eef2f3; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 400px; }
+        h2 { margin-top: 0; color: #2c3e50; font-size: 1.4rem; text-align: center; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
+        input { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #6c5ce7; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+        button:hover { background-color: #a29bfe; }
+        .output-box { margin-top: 25px; padding: 15px; background-color: #f9f9f9; border-left: 5px solid #6c5ce7; border-radius: 4px; }
+        p { margin: 8px 0; font-family: monospace; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Registro de Usuario</h2>
+    <form id="userForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" placeholder="Ej: Juan" required>
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" placeholder="Ej: Lopez" required>
+        
+        <button type="submit">Generar Datos</button>
+    </form>
+
+    <div id="resultado" class="output-box" style="display: none;">
+        <p id="userNameLine"></p>
+        <p id="initialsLine"></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Obtener valores de los inputs
+        const nombre = document.getElementById('nombre').value.trim();
+        const apellido = document.getElementById('apellido').value.trim();
+
+        if (nombre && apellido) {
+            // 1. Crear nombre de usuario (minúsculas y unido)
+            const nombreUsuario = (nombre + apellido).toLowerCase();
+
+            // 2. Obtener iniciales (Mayúsculas)
+            const iniciales = (nombre[0] + apellido[0]).toUpperCase();
+
+            // Mostrar resultados
+            const display = document.getElementById('resultado');
+            const userLine = document.getElementById('userNameLine');
+            const initLine = document.getElementById('initialsLine');
+
+            display.style.display = 'block';
+            userLine.innerText = `Nombre de usuario: ${nombreUsuario}`;
+            initLine.innerText = `Iniciales: ${iniciales}`;
+        }
+    });
+</script>
+
+</body>
+</html>
